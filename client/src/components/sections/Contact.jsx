@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiMail, FiSend, FiCheckCircle, FiGithub, FiLinkedin } from 'react-icons/fi';
 
+import emailjs from '@emailjs/browser';
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -18,7 +20,23 @@ const Contact = () => {
     e.preventDefault();
     setStatus('submitting');
     
+    // Service ID, Template ID, Public Key - USER MUST REPLACE THESE
+    const serviceID = 'service_portfolio';
+    const templateID = 'template_datzu9c';
+    const publicKey = '3L3Txuoyqo75sPfHq';
+
     try {
+      // 1. Send Email via EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_email: 'theoudar07@gmail.com' 
+      };
+      
+      await emailjs.send(serviceID, templateID, templateParams, publicKey);
+
+      // 2. Save to Database (Optional backup)
       const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
       const res = await fetch(`${API_URL}/api/contact`, {
         method: 'POST',
@@ -31,10 +49,14 @@ const Contact = () => {
         setFormData({ name: '', email: '', message: '' });
         setTimeout(() => setStatus('idle'), 5000);
       } else {
-        setStatus('error');
+        // Even if DB fails, if email sent, we can consider it a partial success or log it
+        console.warn("Email sent but DB save failed");
+        setStatus('success'); // Still show success to user if email went through
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setStatus('idle'), 5000);
       }
     } catch (err) {
-      console.error(err);
+      console.error("Failed to send message:", err);
       setStatus('error');
     }
   };
