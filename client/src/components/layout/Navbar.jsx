@@ -89,7 +89,7 @@ const Navbar = () => {
               ))}
               <hr className="border-slate-100 my-2" />
               <a 
-                href="/resume.pdf" 
+                href="/updated_resume.pdf" 
                 className="text-center w-full py-3 bg-slate-900 text-white font-medium rounded-xl shadow-lg active:scale-95 transition-all"
               >
                 Download Resume
