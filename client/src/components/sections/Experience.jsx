@@ -10,10 +10,13 @@ const Experience = () => {
     const fetchExperience = async () => {
       try {
         const API_URL = import.meta.env.VITE_API_BASE_URL;
+        console.log("Fetching experience from:", API_URL);
         const response = await fetch(`${API_URL}/api/experience`);
         if (response.ok) {
           const data = await response.json();
           setExperiences(data);
+        } else {
+             throw new Error(`HTTP error! status: ${response.status}`);
         }
       } catch (error) {
         console.error("Failed to fetch experience:", error);

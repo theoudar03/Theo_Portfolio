@@ -9,7 +9,11 @@ const Skills = () => {
     const fetchSkills = async () => {
       try {
         const API_URL = import.meta.env.VITE_API_BASE_URL;
+        console.log("Fetching skills from:", API_URL); 
         const res = await fetch(`${API_URL}/api/skills`);
+        if (!res.ok) {
+           throw new Error(`HTTP error! status: ${res.status}`);
+        }
         const data = await res.json();
         
         // Categorize skills from DB

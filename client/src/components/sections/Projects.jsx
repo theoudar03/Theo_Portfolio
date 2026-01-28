@@ -10,10 +10,13 @@ const Projects = () => {
     const fetchProjects = async () => {
       try {
         const API_URL = import.meta.env.VITE_API_BASE_URL;
+        console.log("Fetching projects from:", API_URL);
         const response = await fetch(`${API_URL}/api/projects`);
         if (response.ok) {
           const data = await response.json();
           setProjects(data);
+        } else {
+           throw new Error(`HTTP error! status: ${response.status}`);
         }
       } catch (error) {
         console.error("Failed to fetch projects:", error);
