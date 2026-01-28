@@ -9,7 +9,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+        const API_URL = import.meta.env.VITE_API_BASE_URL;
         const response = await fetch(`${API_URL}/api/projects`);
         if (response.ok) {
           const data = await response.json();
@@ -58,7 +58,7 @@ const Projects = () => {
                   {/* Dynamic Image or Fallback Icon */}
                   {project.image ? (
                      <img 
-                       src={project.image.startsWith('http') ? project.image : `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}${project.image}`} 
+                       src={project.image.startsWith('http') ? project.image : `${import.meta.env.VITE_API_BASE_URL}${project.image}`} 
                        alt={project.title} 
                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                      />

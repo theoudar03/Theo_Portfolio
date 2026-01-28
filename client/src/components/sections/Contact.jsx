@@ -37,7 +37,7 @@ const Contact = () => {
       await emailjs.send(serviceID, templateID, templateParams, publicKey);
 
       // 2. Save to Database (Optional backup)
-      const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+      const API_URL = import.meta.env.VITE_API_BASE_URL;
       const res = await fetch(`${API_URL}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

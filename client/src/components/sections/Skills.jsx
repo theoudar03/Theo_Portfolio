@@ -8,7 +8,7 @@ const Skills = () => {
   useEffect(() => {
     const fetchSkills = async () => {
       try {
-        const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+        const API_URL = import.meta.env.VITE_API_BASE_URL;
         const res = await fetch(`${API_URL}/api/skills`);
         const data = await res.json();
         
@@ -65,7 +65,7 @@ const Skills = () => {
                   <div className="w-12 h-12 mb-3 flex items-center justify-center group-hover:scale-110 transition-transform">
                      {skill.iconUrl && (
                         <img 
-                          src={skill.iconUrl.startsWith('http') ? skill.iconUrl : `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}${skill.iconUrl}`} 
+                          src={skill.iconUrl.startsWith('http') ? skill.iconUrl : `${import.meta.env.VITE_API_BASE_URL}${skill.iconUrl}`} 
                           alt={skill.name} 
                           className="w-full h-full object-contain" 
                         />
@@ -102,7 +102,7 @@ const Skills = () => {
                   <div className="w-12 h-12 mb-3 flex items-center justify-center group-hover:scale-110 transition-transform">
                      {skill.iconUrl && (
                         <img 
-                          src={skill.iconUrl.startsWith('http') ? skill.iconUrl : `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}${skill.iconUrl}`} 
+                          src={skill.iconUrl.startsWith('http') ? skill.iconUrl : `${import.meta.env.VITE_API_BASE_URL}${skill.iconUrl}`} 
                           alt={skill.name} 
                           className="w-full h-full object-contain" 
                         />
