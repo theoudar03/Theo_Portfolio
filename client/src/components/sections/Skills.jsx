@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Skeleton from '../ui/Skeleton';
 
 const Skills = () => {
   const [skills, setSkills] = useState({ technical: [], tools: [] });
@@ -30,7 +31,7 @@ const Skills = () => {
     fetchSkills();
   }, []);
 
-  if (loading) return <div className="text-center py-20">Loading Skills...</div>;
+
 
   return (
     <section id="skills" className="py-24 bg-slate-50/50 relative">
@@ -51,6 +52,27 @@ const Skills = () => {
           <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
         </motion.div>
 
+        {loading ? (
+          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+             {[1, 2].map((col) => (
+               <div key={col} className="glass-card p-8 rounded-2xl">
+                 <div className="mb-8 pb-4 border-b border-slate-100 flex items-center gap-2">
+                    <Skeleton className="w-2 h-8 rounded-full" />
+                    <Skeleton className="h-8 w-48" />
+                 </div>
+                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+                    {[1, 2, 3, 4, 5, 6].map(item => (
+                       <div key={item} className="flex flex-col items-center justify-center p-4 rounded-xl bg-white border border-slate-100 h-32">
+                          <Skeleton className="w-12 h-12 mb-3 rounded-full" />
+                          <Skeleton className="h-4 w-20" />
+                          {col === 1 && <Skeleton className="h-3 w-16 mt-2" />}
+                       </div>
+                    ))}
+                 </div>
+               </div>
+             ))}
+          </div>
+        ) : (
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Left Column: Technical Skills */}
           <motion.div
@@ -118,6 +140,7 @@ const Skills = () => {
             </div>
           </motion.div>
         </div>
+        )}
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FiBriefcase, FiAward, FiMapPin, FiCalendar } from 'react-icons/fi';
+import Skeleton from '../ui/Skeleton';
 
 const Experience = () => {
   const [experiences, setExperiences] = useState([]);
@@ -28,14 +29,6 @@ const Experience = () => {
     fetchExperience();
   }, []);
 
-  if (loading) {
-    return (
-      <section id="experience" className="py-20 bg-slate-50/50 min-h-[500px] flex items-center justify-center">
-        <div className="text-slate-500">Loading Experience...</div>
-      </section>
-    );
-  }
-
   return (
     <section id="experience" className="py-20 bg-slate-50/50">
       <div className="container mx-auto px-6">
@@ -50,7 +43,42 @@ const Experience = () => {
         </motion.div>
 
         <div className="max-w-3xl mx-auto">
-          {experiences.length === 0 ? (
+          {loading ? (
+            <div className="relative border-l-2 border-slate-200 ml-4 md:ml-0 space-y-12">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="relative pl-8 md:pl-12">
+                  {/* Timeline Dot Skeleton */}
+                  <div className="absolute -left-[9px] top-0 w-5 h-5 bg-white border-4 border-slate-200 rounded-full"></div>
+                  
+                  <div className="glass-card p-6 md:p-8 border border-white/60 bg-white/50 backdrop-blur-sm shadow-sm rounded-xl">
+                    <div className="flex flex-col md:flex-row justify-between mb-4 md:items-start gap-4">
+                       <div className="w-full">
+                         <Skeleton className="h-7 w-48 mb-2" />
+                         <Skeleton className="h-5 w-32" />
+                       </div>
+                       
+                       <Skeleton className="h-6 w-24 rounded-full" />
+                    </div>
+
+                    <Skeleton className="h-4 w-32 mb-4" />
+
+                    <div className="space-y-2 mb-6">
+                      <Skeleton className="h-4 w-full" />
+                      <Skeleton className="h-4 w-full" />
+                      <Skeleton className="h-4 w-3/4" />
+                    </div>
+
+                    {/* Technologies Skeleton */}
+                    <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-slate-100">
+                      <Skeleton className="h-6 w-16" />
+                      <Skeleton className="h-6 w-20" />
+                      <Skeleton className="h-6 w-14" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : experiences.length === 0 ? (
             <div className="text-center text-slate-500">No experience entries found.</div>
           ) : (
             <div className="relative border-l-2 border-slate-200 ml-4 md:ml-0 space-y-12">

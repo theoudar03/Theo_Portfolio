@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FiGithub, FiExternalLink, FiFolder, FiCode } from 'react-icons/fi';
+import { FiGithub, FiExternalLink, FiFolder } from 'react-icons/fi';
+import Skeleton from '../ui/Skeleton';
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -27,8 +28,6 @@ const Projects = () => {
     fetchProjects();
   }, []);
 
-  if (loading) return <div className="text-center py-20">Loading Projects...</div>;
-
   return (
     <section id="projects" className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
@@ -44,7 +43,34 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        {projects.length === 0 ? (
+        {loading ? (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <div key={i} className="glass-card overflow-hidden flex flex-col h-full border border-white/60">
+                <div className="h-48 bg-slate-100 relative">
+                   <Skeleton className="w-full h-full" />
+                </div>
+                <div className="p-6 flex-1 flex flex-col">
+                  <Skeleton className="h-7 w-3/4 mb-4" />
+                  <Skeleton className="h-4 w-full mb-2" />
+                  <Skeleton className="h-4 w-full mb-2" />
+                  <Skeleton className="h-4 w-2/3 mb-6" />
+                  
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    <Skeleton className="h-6 w-16" />
+                    <Skeleton className="h-6 w-20" />
+                    <Skeleton className="h-6 w-12" />
+                  </div>
+                  
+                  <div className="flex items-center gap-4 mt-auto pt-4 border-t border-slate-100">
+                    <Skeleton className="h-5 w-20" />
+                    <Skeleton className="h-5 w-24" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : projects.length === 0 ? (
            <div className="text-center text-slate-500">No projects found.</div>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
