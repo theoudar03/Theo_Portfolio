@@ -1,0 +1,120 @@
+[debug] [2026-01-29T19:24:08.472Z] ----------------------------------------------------------------------
+[debug] [2026-01-29T19:24:08.476Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\theou\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2026-01-29T19:24:08.477Z] CLI Version:   15.1.0
+[debug] [2026-01-29T19:24:08.477Z] Platform:      win32
+[debug] [2026-01-29T19:24:08.477Z] Node Version:  v25.2.1
+[debug] [2026-01-29T19:24:08.477Z] Time:          Fri Jan 30 2026 00:54:08 GMT+0530 (India Standard Time)
+[debug] [2026-01-29T19:24:08.477Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-01-29T19:24:08.479Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2026-01-29T19:24:11.174Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-01-29T19:24:11.175Z] > authorizing via signed-in user (theoudar07@gmail.com)
+[debug] [2026-01-29T19:24:11.175Z] [iam] checking project theo-d for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-01-29T19:24:11.175Z] Checked if tokens are valid: false, expires at: 1769618282805
+[debug] [2026-01-29T19:24:11.176Z] Checked if tokens are valid: false, expires at: 1769618282805
+[debug] [2026-01-29T19:24:11.176Z] > refreshing access token with scopes: []
+[debug] [2026-01-29T19:24:11.177Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-01-29T19:24:11.177Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-01-29T19:24:11.477Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-01-29T19:24:11.477Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-01-29T19:24:11.488Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/theo-d:testIamPermissions [none]
+[debug] [2026-01-29T19:24:11.489Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/theo-d:testIamPermissions x-goog-quota-user=projects/theo-d
+[debug] [2026-01-29T19:24:11.489Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/theo-d:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-01-29T19:24:11.854Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2026-01-29T19:24:11.854Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2026-01-29T19:24:13.151Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/theo-d:testIamPermissions 200
+[debug] [2026-01-29T19:24:13.151Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/theo-d:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-01-29T19:24:13.152Z] Checked if tokens are valid: true, expires at: 1769718250477
+[debug] [2026-01-29T19:24:13.152Z] Checked if tokens are valid: true, expires at: 1769718250477
+[debug] [2026-01-29T19:24:13.152Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/theo-d [none]
+[debug] [2026-01-29T19:24:14.643Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/theo-d 200
+[debug] [2026-01-29T19:24:14.644Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/theo-d {"projectId":"theo-d","projectNumber":"184909979157","displayName":"Theo Portfolio","name":"projects/theo-d","resources":{"hostingSite":"theo-d"},"state":"ACTIVE","etag":"1_c5fd367b-e6a1-4d85-b389-806172bd8309"}
+[info] 
+[info] === Deploying to 'theo-d'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2026-01-29T19:24:14.667Z] Checked if tokens are valid: true, expires at: 1769718250477
+[debug] [2026-01-29T19:24:14.668Z] Checked if tokens are valid: true, expires at: 1769718250477
+[debug] [2026-01-29T19:24:14.669Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/theo-d/versions [none]
+[debug] [2026-01-29T19:24:14.670Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/theo-d/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2026-01-29T19:24:16.825Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/theo-d/versions 200
+[debug] [2026-01-29T19:24:16.826Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/theo-d/versions {"name":"projects/184909979157/sites/theo-d/versions/8a429d3343194a9c","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[theo-d]: beginning deploy... 
+[info] i  hosting[theo-d]: found 7 files in client/dist 
+[debug] [2026-01-29T19:24:16.888Z] [hosting] uploading with 200 concurrency
+[debug] [2026-01-29T19:24:16.981Z] Checked if tokens are valid: true, expires at: 1769718250477
+[debug] [2026-01-29T19:24:16.982Z] Checked if tokens are valid: true, expires at: 1769718250477
+[debug] [2026-01-29T19:24:16.989Z] [hosting] hash cache [Y2xpZW50XGRpc3Q] stored for 7 files
+[debug] [2026-01-29T19:24:16.994Z] [hosting][hash queue][FINAL] {"max":83,"min":6,"avg":21.428571428571427,"active":0,"complete":7,"success":7,"errored":0,"retried":0,"total":7,"elapsed":103}
+[debug] [2026-01-29T19:24:16.996Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/184909979157/sites/theo-d/versions/8a429d3343194a9c:populateFiles [none]
+[debug] [2026-01-29T19:24:16.999Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/184909979157/sites/theo-d/versions/8a429d3343194a9c:populateFiles {"files":{"/vite.svg":"699a02e0e68a579f687d364bbbe7633161244f35af068220aee37b1b33dfb3c7\r","/updated_resume.pdf":"d423ac29ee535633699e7afb8e71b3327feada9a1564c8e46f3df7f0be141db3","/abt-man.png":"dea1d9b14a143f12578518cc0d285b9c491c29bc8d742d6a8bf86c52013bc0fe\r","/about-illustration.png":"577586bd75b007ee631f2d4bff7800bc410ca6514164f860e4162a64e152cd0e\r","/index.html":"a35a3c85eca0fe887c99f34920dff4773871f91f0c214e47370d242f23902ca4","/assets/index-Nko1_eN9.css":"7f6203b949d1f818ffa258cfce0192cc99cc599eecf82220c9b234ad505f3a50","/assets/index-uUI40C7C.js":"e2b36cd807441900dcfff64c1931a2bc8b03b7f9be2e8f546000a347ace57225"}}
+[debug] [2026-01-29T19:24:17.416Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/184909979157/sites/theo-d/versions/8a429d3343194a9c:populateFiles 200
+[debug] [2026-01-29T19:24:17.417Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/184909979157/sites/theo-d/versions/8a429d3343194a9c:populateFiles {"uploadRequiredHashes":["7f6203b949d1f818ffa258cfce0192cc99cc599eecf82220c9b234ad505f3a50","e2b36cd807441900dcfff64c1931a2bc8b03b7f9be2e8f546000a347ace57225","a35a3c85eca0fe887c99f34920dff4773871f91f0c214e47370d242f23902ca4"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/theo-d/versions/8a429d3343194a9c/files"}
+[debug] [2026-01-29T19:24:17.418Z] Checked if tokens are valid: true, expires at: 1769718250477
+[debug] [2026-01-29T19:24:17.418Z] Checked if tokens are valid: true, expires at: 1769718250477
+[debug] [2026-01-29T19:24:17.418Z] Checked if tokens are valid: true, expires at: 1769718250477
+[debug] [2026-01-29T19:24:17.418Z] Checked if tokens are valid: true, expires at: 1769718250477
+[debug] [2026-01-29T19:24:17.419Z] Checked if tokens are valid: true, expires at: 1769718250477
+[debug] [2026-01-29T19:24:17.419Z] Checked if tokens are valid: true, expires at: 1769718250477
+[debug] [2026-01-29T19:24:17.419Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/theo-d/versions/8a429d3343194a9c/files/7f6203b949d1f818ffa258cfce0192cc99cc599eecf82220c9b234ad505f3a50 [none]
+[debug] [2026-01-29T19:24:17.420Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/theo-d/versions/8a429d3343194a9c/files/7f6203b949d1f818ffa258cfce0192cc99cc599eecf82220c9b234ad505f3a50 [stream]
+[debug] [2026-01-29T19:24:17.422Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/theo-d/versions/8a429d3343194a9c/files/e2b36cd807441900dcfff64c1931a2bc8b03b7f9be2e8f546000a347ace57225 [none]
+[debug] [2026-01-29T19:24:17.423Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/theo-d/versions/8a429d3343194a9c/files/e2b36cd807441900dcfff64c1931a2bc8b03b7f9be2e8f546000a347ace57225 [stream]
+[debug] [2026-01-29T19:24:17.424Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/theo-d/versions/8a429d3343194a9c/files/a35a3c85eca0fe887c99f34920dff4773871f91f0c214e47370d242f23902ca4 [none]
+[debug] [2026-01-29T19:24:17.425Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/theo-d/versions/8a429d3343194a9c/files/a35a3c85eca0fe887c99f34920dff4773871f91f0c214e47370d242f23902ca4 [stream]
+[debug] [2026-01-29T19:24:17.427Z] [hosting][populate queue][FINAL] {"max":438,"min":438,"avg":438,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":446}
+[debug] [2026-01-29T19:24:17.428Z] [hosting] uploads queued: 3
+[info] i  hosting: uploading new files [0/3] (0%) 
+[debug] [2026-01-29T19:24:19.363Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/theo-d/versions/8a429d3343194a9c/files/a35a3c85eca0fe887c99f34920dff4773871f91f0c214e47370d242f23902ca4 200
+[debug] [2026-01-29T19:24:19.364Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/theo-d/versions/8a429d3343194a9c/files/a35a3c85eca0fe887c99f34920dff4773871f91f0c214e47370d242f23902ca4 [stream]
+[debug] [2026-01-29T19:24:19.613Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/theo-d/versions/8a429d3343194a9c/files/e2b36cd807441900dcfff64c1931a2bc8b03b7f9be2e8f546000a347ace57225 200
+[debug] [2026-01-29T19:24:19.614Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/theo-d/versions/8a429d3343194a9c/files/e2b36cd807441900dcfff64c1931a2bc8b03b7f9be2e8f546000a347ace57225 [stream]
+[debug] [2026-01-29T19:24:19.714Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/theo-d/versions/8a429d3343194a9c/files/7f6203b949d1f818ffa258cfce0192cc99cc599eecf82220c9b234ad505f3a50 200
+[debug] [2026-01-29T19:24:19.715Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/theo-d/versions/8a429d3343194a9c/files/7f6203b949d1f818ffa258cfce0192cc99cc599eecf82220c9b234ad505f3a50 [stream]
+[debug] [2026-01-29T19:24:19.715Z] [hosting][upload queue][FINAL] {"max":2298,"min":1946,"avg":2146.6666666666665,"active":0,"complete":3,"success":3,"errored":0,"retried":0,"total":3,"elapsed":2298}
+[info] i  hosting: upload complete 
+[info] +  hosting[theo-d]: file upload complete 
+[debug] [2026-01-29T19:24:19.717Z] [hosting] deploy completed after 2882ms
+[debug] [2026-01-29T19:24:19.720Z] [
+  {
+    "config": {
+      "public": "client/dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "theo-d"
+    },
+    "version": "projects/184909979157/sites/theo-d/versions/8a429d3343194a9c"
+  }
+]
+[info] i  hosting[theo-d]: finalizing version... 
+[debug] [2026-01-29T19:24:19.734Z] Checked if tokens are valid: true, expires at: 1769718250477
+[debug] [2026-01-29T19:24:19.735Z] Checked if tokens are valid: true, expires at: 1769718250477
+[debug] [2026-01-29T19:24:19.745Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/theo-d/versions/8a429d3343194a9c updateMask=status%2Cconfig
+[debug] [2026-01-29T19:24:19.750Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/theo-d/versions/8a429d3343194a9c {"status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]}}
+[debug] [2026-01-29T19:24:20.239Z] <<< [apiv2][status] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/theo-d/versions/8a429d3343194a9c 200
+[debug] [2026-01-29T19:24:20.240Z] <<< [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/theo-d/versions/8a429d3343194a9c {"name":"projects/184909979157/sites/theo-d/versions/8a429d3343194a9c","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2026-01-29T19:24:17.729575Z","createUser":{"email":"theoudar07@gmail.com"},"finalizeTime":"2026-01-29T19:24:21.342612Z","finalizeUser":{"email":"theoudar07@gmail.com"}}
+[debug] [2026-01-29T19:24:20.240Z] [hosting] finalized version for theo-d:[object Object]
+[info] +  hosting[theo-d]: version finalized 
+[info] i  hosting[theo-d]: releasing new version... 
+[debug] [2026-01-29T19:24:20.242Z] Checked if tokens are valid: true, expires at: 1769718250477
+[debug] [2026-01-29T19:24:20.242Z] Checked if tokens are valid: true, expires at: 1769718250477
+[debug] [2026-01-29T19:24:20.242Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/theo-d/channels/live/releases versionName=projects%2F184909979157%2Fsites%2Ftheo-d%2Fversions%2F8a429d3343194a9c
+[debug] [2026-01-29T19:24:20.242Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/theo-d/channels/live/releases {}
+[debug] [2026-01-29T19:24:20.652Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/theo-d/channels/live/releases 200
+[debug] [2026-01-29T19:24:20.653Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/theo-d/channels/live/releases {"name":"projects/184909979157/sites/theo-d/channels/live/releases/1769714661254000","version":{"name":"projects/184909979157/sites/theo-d/versions/8a429d3343194a9c","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2026-01-29T19:24:17.729575Z","createUser":{"email":"theoudar07@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJe3lGNoxGmBBkPbIXhQbIhCb3w5-Sff3iaBWIpo3-L-BpWD7fI"},"finalizeTime":"2026-01-29T19:24:21.342612Z","finalizeUser":{"email":"theoudar07@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJe3lGNoxGmBBkPbIXhQbIhCb3w5-Sff3iaBWIpo3-L-BpWD7fI"}},"type":"DEPLOY","releaseTime":"2026-01-29T19:24:21.254Z","releaseUser":{"email":"theoudar07@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJe3lGNoxGmBBkPbIXhQbIhCb3w5-Sff3iaBWIpo3-L-BpWD7fI"}}
+[debug] [2026-01-29T19:24:20.653Z] [hosting] release: {"name":"projects/184909979157/sites/theo-d/channels/live/releases/1769714661254000","version":{"name":"projects/184909979157/sites/theo-d/versions/8a429d3343194a9c","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2026-01-29T19:24:17.729575Z","createUser":{"email":"theoudar07@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJe3lGNoxGmBBkPbIXhQbIhCb3w5-Sff3iaBWIpo3-L-BpWD7fI"},"finalizeTime":"2026-01-29T19:24:21.342612Z","finalizeUser":{"email":"theoudar07@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJe3lGNoxGmBBkPbIXhQbIhCb3w5-Sff3iaBWIpo3-L-BpWD7fI"}},"type":"DEPLOY","releaseTime":"2026-01-29T19:24:21.254Z","releaseUser":{"email":"theoudar07@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJe3lGNoxGmBBkPbIXhQbIhCb3w5-Sff3iaBWIpo3-L-BpWD7fI"}}
+[info] +  hosting[theo-d]: release complete 
+[info] 
+[info] +  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/theo-d/overview
+[info] Hosting URL: https://theo-d.web.app

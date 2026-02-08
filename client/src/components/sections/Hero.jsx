@@ -73,7 +73,7 @@ const Hero = () => {
             </a>
 
             <a 
-              href="/updated_resume.pdf" 
+              href="/Updated_resume_08_02.pdf" 
               className="group px-8 py-4 bg-white/50 backdrop-blur-sm text-slate-700 font-medium rounded-full border border-white/60 shadow-sm hover:shadow-md hover:bg-white hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 w-full sm:w-auto"
             >
               Download Resume 

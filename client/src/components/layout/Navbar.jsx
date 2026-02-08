@@ -50,7 +50,7 @@ const Navbar = () => {
           ))}
           <div className="pl-4 ml-2 border-l border-slate-200">
             <a 
-              href="/updated_resume.pdf" 
+              href="/Updated_resume_08_02.pdf" 
               className="px-6 py-2.5 bg-slate-900 text-white text-sm font-medium rounded-full shadow-lg shadow-slate-900/20 hover:shadow-xl hover:shadow-slate-900/30 hover:-translate-y-0.5 transition-all duration-300 active:scale-95"
             >
               Resume
@@ -89,7 +89,7 @@ const Navbar = () => {
               ))}
               <hr className="border-slate-100 my-2" />
               <a 
-                href="/updated_resume.pdf" 
+                href="/Updated_resume_08_02.pdf" 
                 className="text-center w-full py-3 bg-slate-900 text-white font-medium rounded-xl shadow-lg active:scale-95 transition-all"
               >
                 Download Resume
