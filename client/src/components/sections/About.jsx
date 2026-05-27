@@ -21,13 +21,13 @@ const About = () => {
             
             <div className="glass-card p-6 md:p-8 space-y-4 text-lg text-slate-600 leading-relaxed border-l-4 border-purple-500">
               <p>
-                I am an <strong className="text-slate-800">Electronics and Communication Engineering</strong> student with a strong interest in <strong className="text-slate-800">full-stack web development</strong> and a growing passion for building real-world applications. I am currently learning the <strong className="text-slate-800">MERN stack</strong> and exploring <strong className="text-slate-800">DSA in Java</strong>.
+                I am an <strong className="text-slate-800">Electronics and Communication Engineering</strong> student passionate about software development and building real-world technology solutions.
               </p>
               <p>
-                Alongside web development, I am also exploring <strong className="text-slate-800">IoT and electronics</strong>, which allows me to understand how software interacts with hardware and real-world systems. I enjoy learning how complex systems work and applying that knowledge to create practical, scalable solutions.
+                My current focus is on becoming a <strong className="text-slate-800">backend-focused full-stack developer</strong>, working with <strong className="text-slate-800">Java, Spring Boot, React</strong>, and modern web technologies, while also exploring <strong className="text-slate-800">IoT and embedded systems</strong> to bridge software with hardware applications.
               </p>
               <p>
-                I am continuously improving my technical skills, focusing on writing clean, maintainable code and developing a strong problem-solving mindset. I am eager to learn, build meaningful projects, and grow as a software developer in a technology-driven environment.
+                I enjoy <strong className="text-slate-800">solving complex problems</strong>, building practical projects, and continuously improving my skills in creating <strong className="text-slate-800">scalable and maintainable systems</strong>.
               </p>
             </div>
           </div>

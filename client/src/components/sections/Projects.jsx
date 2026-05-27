@@ -1,11 +1,124 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { FiGithub, FiExternalLink, FiFolder } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiGithub, FiExternalLink, FiFolder, FiX } from 'react-icons/fi';
 import Skeleton from '../ui/Skeleton';
+
+// Premium Modal Component for Project Details
+const ProjectModal = ({ project, onClose }) => {
+  if (!project) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      {/* Backdrop */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+        className="absolute inset-0 bg-slate-900/60 backdrop-blur-md"
+      />
+
+      {/* Modal content */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+        transition={{ type: 'spring', damping: 25, stiffness: 350 }}
+        className="bg-white/95 border border-white/80 rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl relative z-10 flex flex-col max-h-[90vh] md:max-h-[85vh] glass-card"
+      >
+        {/* Header/Close button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-20 p-2 rounded-full bg-slate-100/80 hover:bg-slate-200 text-slate-600 hover:text-slate-900 transition-colors shadow-sm"
+          aria-label="Close details"
+        >
+          <FiX size={18} />
+        </button>
+
+        {/* Project Image */}
+        <div className="h-48 md:h-64 bg-gradient-to-br from-slate-100 to-slate-200 relative overflow-hidden flex items-center justify-center border-b border-slate-100">
+          {project.image ? (
+            <img
+              src={project.image.startsWith('http') ? project.image : `${import.meta.env.VITE_API_BASE_URL}${project.image}`}
+              alt={project.title}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <FiFolder size={64} className="text-slate-300" />
+          )}
+          <span className="absolute bottom-4 left-4 text-xs font-semibold px-3 py-1 bg-purple-500 text-white rounded-full shadow-md">
+            {project.category}
+          </span>
+        </div>
+
+        {/* Scrollable details */}
+        <div className="p-6 md:p-8 overflow-y-auto space-y-6 flex-1">
+          <div>
+            <h3 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-2 leading-tight">{project.title}</h3>
+          </div>
+
+          <div className="space-y-3">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">About the Project</h4>
+            <p className="text-slate-600 leading-relaxed whitespace-pre-line text-sm md:text-base">
+              {project.description}
+            </p>
+          </div>
+
+          {/* Technologies */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Technologies Used</h4>
+            <div className="flex flex-wrap gap-2">
+              {project.technologies && project.technologies.map(tag => (
+                <span key={tag} className="text-xs font-semibold px-3 py-1.5 bg-purple-50 text-purple-700 rounded-lg border border-purple-100/50">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Footer actions */}
+        <div className="p-5 border-t border-slate-100 bg-slate-50/50 flex items-center justify-end gap-3">
+          <a
+            href={project.githubLink}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium border border-slate-200 hover:border-slate-300 text-slate-700 bg-white hover:bg-slate-50 transition-all"
+          >
+            <FiGithub size={16} /> Code
+          </a>
+          {project.liveLink && (
+            <a
+              href={project.liveLink}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 shadow-md hover:shadow-lg transition-all"
+            >
+              <FiExternalLink size={16} /> Live Demo
+            </a>
+          )}
+        </div>
+      </motion.div>
+    </div>
+  );
+};
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  // Prevent background scrolling when modal is open
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedProject]);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -102,10 +215,21 @@ const Projects = () => {
                 </div>
                 
                 <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-bold text-slate-800 mb-3">{project.title}</h3>
-                  <p className="text-slate-600 text-sm mb-6 flex-1 leading-relaxed">
-                    {project.description}
-                  </p>
+                  <h3 className="text-xl font-bold text-slate-800 mb-3 line-clamp-1">{project.title}</h3>
+                  
+                  {/* Fixed description height for pixel-perfect card alignment */}
+                  <div className="h-[72px] overflow-hidden mb-2">
+                    <p className="text-slate-600 text-sm leading-relaxed line-clamp-3">
+                      {project.description}
+                    </p>
+                  </div>
+                  
+                  <button
+                    onClick={() => setSelectedProject(project)}
+                    className="text-purple-600 hover:text-purple-700 text-xs font-semibold mb-4 self-start flex items-center gap-1 group/btn transition-colors"
+                  >
+                    Read More <span className="inline-block transform transition-transform group-hover/btn:translate-x-1">→</span>
+                  </button>
                   
                   {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mb-6">
@@ -132,6 +256,13 @@ const Projects = () => {
           </div>
         )}
       </div>
+
+      {/* Detail Modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+        )}
+      </AnimatePresence>
     </section>
   );
 };
